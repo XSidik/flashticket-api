@@ -1,0 +1,15 @@
+services:
+  adminer:
+    image: adminer:latest
+    container_name: flashticket_adminer
+    restart: always
+    ports:
+      - "${FORWARD_ADMINER_PORT:-8080}:8080"
+    networks:
+      - flashticket_network
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+
+networks:
+  flashticket_network:
+    driver: bridge

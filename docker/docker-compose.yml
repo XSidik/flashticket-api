@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: flashticket_app
+    restart: always
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    env_file:
+      - ../.env
+    networks:
+      - flashticket_network
+
+networks:
+  flashticket_network:
+    driver: bridge
